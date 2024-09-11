@@ -1,5 +1,7 @@
 "use client";
+
 import {useState} from "react";
+import {motion} from "framer-motion";
 import {
   IconCheck,
   IconCoins,
@@ -29,26 +31,68 @@ const options: Option[] = [
 ];
 
 export function Step1Content({data, setData}: {data: any; setData: any}) {
+  const containerVariants = {
+    hidden: {opacity: 0},
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {y: 20, opacity: 0},
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className="">
-      <h2 className="mb-4 mt-10 text-[1.125rem] text-xl font-bold">What would you like to Value?</h2>
-      <div className="grid auto-rows-fr grid-cols-2 grid-rows-1 gap-2 sm:grid-cols-3 md:grid-cols-4">
+    <motion.div
+      className=""
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <motion.h2
+        className="mb-4 mt-10 text-[1.125rem] text-xl font-bold"
+        variants={itemVariants}
+      >
+        What would you like to Value?
+      </motion.h2>
+      <motion.div
+        className="grid auto-rows-fr grid-cols-2 grid-rows-1 gap-2 sm:grid-cols-3 md:grid-cols-4"
+        variants={containerVariants}
+      >
         {options.map((option) => (
-          <button
+          <motion.button
             key={option.id}
             className={`relative flex flex-col items-center justify-center rounded-2xl px-2 py-6 transition-colors ${
               data.selectedOption === option.id ? "bg-primary text-white" : "bg-gray-100 hover:bg-gray-200"
             }`}
             onClick={() => setData((prev: any) => ({...prev, selectedOption: option.id}))}
+            variants={itemVariants}
+            whileHover={{scale: 1.05}}
+            whileTap={{scale: 0.95}}
           >
-            <option.icon className="" />
-            {data.selectedOption === option.id && (
-              <IconCheck className="absolute right-3 top-3 h-4 w-4 rounded-sm bg-white text-primary" />
-            )}
+            <option.icon className="text-2xl" />
+            <motion.div
+              initial={{scale: 0, opacity: 0}}
+              animate={{
+                scale: data.selectedOption === option.id ? 1 : 0,
+                opacity: data.selectedOption === option.id ? 1 : 0,
+              }}
+              transition={{duration: 0.2}}
+              className="absolute right-3 top-3"
+            >
+              <IconCheck className="h-4 w-4 rounded-sm bg-white text-primary" />
+            </motion.div>
             <span className="mt-2 text-center text-sm font-bold">{option.label}</span>
-          </button>
+          </motion.button>
         ))}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
