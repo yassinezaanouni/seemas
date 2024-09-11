@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export const RightPanel = () => (
-  <div className="bg-primary-light relative flex-[0.6] overflow-hidden rounded-[2rem] pt-8">
+  <div className="relative flex-[0.6] overflow-hidden rounded-[2rem] bg-primary-light pt-8">
     <div className="absolute bottom-0">
       <TagImages />
       <Image
@@ -11,6 +11,7 @@ export const RightPanel = () => (
         height={760}
       />
     </div>
+
     <CardImages />
   </div>
 );

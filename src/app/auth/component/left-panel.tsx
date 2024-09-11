@@ -14,7 +14,7 @@ export type AuthFormProps = {
 };
 export const LeftPanel = (props: AuthFormProps) => {
   return (
-    <div className="flex min-h-full flex-[0.4] flex-col justify-between gap-6">
+    <div className="flex h-full flex-[0.4] flex-col justify-between gap-6">
       <Logo />
       <AuthForm {...props} />
       <Footer />
