@@ -7,6 +7,7 @@ import {Input} from "@/components/ui/input";
 import {Logo} from "@/components/ui/logo";
 import {Step1Content} from "./components/step1-content";
 import {Step2Content} from "./components/step2-content";
+import {Step3Content} from "./components/step3-content";
 
 interface Step {
   title: string;
@@ -15,21 +16,23 @@ interface Step {
 
 const Page = () => {
   const [data, setData] = useState({
+    selectedOption: "",
     companyName: "",
     file: null,
   });
-  const [progress, setProgress] = useState(0);
   const stepsContent = [
     <Step1Content
       data={data}
       setData={setData}
     />,
     <Step2Content
+      data={data}
+      setData={setData}
+    />,
+    <Step3Content
       onFileUpload={(file: File) => {
         console.log(file);
       }}
-      progress={progress}
-      setProgress={setProgress}
       data={data}
       setData={setData}
     />,
@@ -50,11 +53,16 @@ const Page = () => {
     setCurrentStep(1);
   };
 
+  const isNextButtonDisabled =
+    (currentStep === 1 && !data.selectedOption) ||
+    (currentStep === 2 && !data.companyName) ||
+    (currentStep === 3 && !data.file);
+
   return (
     <section className="flex h-screen min-h-[1000px] gap-[4.5rem] bg-primary-light">
       <div className="container flex flex-col items-center justify-center">
         <Logo />
-        <div className="mt-12 flex max-h-[694px] w-[min(100%,560px)] flex-1 flex-col rounded-3xl bg-white p-8">
+        <div className="mt-12 flex w-[min(100%,560px)] flex-1 flex-col rounded-3xl bg-white p-8 lg:max-h-[694px]">
           <SteppedProgress
             steps={totalSteps}
             currentStep={currentStep}
@@ -73,24 +81,14 @@ const Page = () => {
                 Back
               </Button>
             )}
-            {currentStep < totalSteps ? (
-              <Button
-                onClick={handleNext}
-                size="lg"
-                className="ml-auto rounded-full font-semibold"
-              >
-                Continue
-              </Button>
-            ) : (
-              <Button
-                disabled={progress < 100}
-                onClick={handleReset}
-                size="lg"
-                className={`ml-auto rounded-full font-semibold ${progress < 100 ? "opacity-70" : ""}`}
-              >
-                Generate Report
-              </Button>
-            )}
+            <Button
+              disabled={isNextButtonDisabled}
+              onClick={handleNext}
+              size="lg"
+              className="ml-auto rounded-full font-semibold transition-all disabled:opacity-70"
+            >
+              {currentStep === totalSteps ? "Generate Report" : "Continue"}
+            </Button>
           </div>
         </div>
       </div>
