@@ -34,19 +34,19 @@ export const AuthForm = ({title, subtitle, description, link}: AuthFormProps) =>
     animate="visible"
   >
     <motion.h1
-      className="text-[2rem] font-bold"
+      className="text-center text-[2rem] font-bold lg:text-start"
       variants={itemVariants}
     >
       {title}
     </motion.h1>
     <motion.p
-      className="mt-2 font-medium text-zinc-600"
+      className="mt-2 text-center font-medium text-zinc-600 lg:text-start"
       variants={itemVariants}
     >
       {subtitle}
     </motion.p>
     <motion.div
-      className="w-[min(100%,480px)]"
+      className="mx-auto w-[min(100%,480px)] lg:ml-0"
       variants={itemVariants}
     >
       <AnimatePresence mode="wait">

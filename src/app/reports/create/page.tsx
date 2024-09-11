@@ -81,7 +81,7 @@ const Page = () => {
             className=""
           />
           <motion.h1
-            className="mt-10 text-[2rem] font-bold"
+            className="mt-5 text-[2rem] font-bold leading-tight md:mt-8 lg:mt-10"
             initial={{x: -20, opacity: 0}}
             whileInView={{x: 0, opacity: 1}}
             transition={{duration: 0.5, delay: 0.6}}
@@ -95,11 +95,12 @@ const Page = () => {
             animate={{x: 0, opacity: 1}}
             exit={{x: -20, opacity: 0}}
             transition={{duration: 0.3}}
+            className="mb-6"
           >
             {stepsContent[currentStep - 1]}
           </motion.div>
           <motion.div
-            className="mt-auto flex justify-between"
+            className="mt-auto flex justify-between gap-2"
             initial={{y: 20, opacity: 0}}
             whileInView={{y: 0, opacity: 1}}
             transition={{duration: 0.5, delay: 0.8}}

@@ -11,7 +11,7 @@ export const Step2Content = ({data, setData}: {data: any; setData: any}) => {
       transition={{duration: 0.3}}
     >
       <motion.h2
-        className="mb-4 mt-10 text-[1.125rem] text-xl font-bold"
+        className="mb-4 mt-5 text-[1.125rem] text-xl font-bold md:mt-8 lg:mt-10"
         initial={{opacity: 0, x: -20}}
         animate={{opacity: 1, x: 0}}
         transition={{delay: 0.1}}

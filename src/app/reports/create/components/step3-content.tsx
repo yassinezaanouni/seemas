@@ -72,7 +72,7 @@ export const Step3Content = ({onFileUpload, data, setData}: Step2ContentProps) =
       transition={{duration: 0.3}}
     >
       <motion.h2
-        className="mt-10 text-[1.125rem] text-xl font-bold"
+        className="mt-5 text-[1.125rem] text-xl font-bold md:mt-8 lg:mt-10"
         initial={{opacity: 0, x: -20}}
         animate={{opacity: 1, x: 0}}
         transition={{delay: 0.1}}
@@ -154,7 +154,7 @@ const UploadedFileView = ({file, progress, onCancel}: UploadedFileViewProps) => 
       </motion.div>
       <div className="flex w-full items-start justify-between gap-2">
         <div>
-          <h3 className="text-sm font-semibold">{file.name}</h3>
+          <h3 className="truncate-2 text-sm font-semibold">{file.name}</h3>
           <p className="mt-0.5 text-sm font-semibold text-zinc-400">{(file.size / (1024 * 1024)).toFixed(2)} MB</p>
         </div>
         <motion.button

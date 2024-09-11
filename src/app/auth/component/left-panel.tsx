@@ -46,7 +46,10 @@ export const LeftPanel = (props: AuthFormProps) => {
       initial="hidden"
       animate="visible"
     >
-      <motion.div variants={itemVariants}>
+      <motion.div
+        className="mx-auto lg:ml-0"
+        variants={itemVariants}
+      >
         <Logo />
       </motion.div>
       <motion.div variants={itemVariants}>
@@ -60,7 +63,7 @@ export const LeftPanel = (props: AuthFormProps) => {
 };
 
 const Footer = () => (
-  <div className="text-sm font-semibold">
+  <div className="text-center text-sm font-semibold lg:text-start">
     <motion.span
       whileHover={{scale: 1.05}}
       whileTap={{scale: 0.95}}

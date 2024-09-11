@@ -56,7 +56,7 @@ export function Step1Content({data, setData}: {data: any; setData: any}) {
       variants={containerVariants}
     >
       <motion.h2
-        className="mb-4 mt-10 text-[1.125rem] text-xl font-bold"
+        className="mb-4 mt-5 text-[1.125rem] text-xl font-bold md:mt-8 lg:mt-10"
         variants={itemVariants}
       >
         What would you like to Value?
