@@ -7,7 +7,7 @@ export const AuthForm = ({title, subtitle, description, link}: AuthFormProps) =>
     <h1 className="text-[2rem] font-bold">{title}</h1>
     <p className="mt-2 font-medium text-zinc-600">{subtitle}</p>
     <div className="w-[min(100%,480px)]">
-      <GoogleSignUpButton />
+      {link.href === "/auth/sign-in" ? <GoogleSignUpButton /> : <GoogleSignInButton />}
       <p className="mt-4 text-center font-medium">
         {description}{" "}
         <Link
@@ -22,7 +22,10 @@ export const AuthForm = ({title, subtitle, description, link}: AuthFormProps) =>
 );
 
 const GoogleSignUpButton = () => (
-  <button className="mt-8 flex w-full items-center justify-center gap-3 rounded-full border p-3">
+  <Link
+    href="/reports/create"
+    className="mt-8 flex w-full items-center justify-center gap-3 rounded-full border p-3"
+  >
     <Image
       src="/icons/google.svg"
       alt="Google Logo"
@@ -30,5 +33,19 @@ const GoogleSignUpButton = () => (
       height={24}
     />
     <span className="font-bold">Sign up with Google</span>
-  </button>
+  </Link>
+);
+const GoogleSignInButton = () => (
+  <Link
+    href="/reports/create"
+    className="mt-8 flex w-full items-center justify-center gap-3 rounded-full border p-3"
+  >
+    <Image
+      src="/icons/google.svg"
+      alt="Google Logo"
+      width={24}
+      height={24}
+    />
+    <span className="font-bold">Sign in with Google</span>
+  </Link>
 );
