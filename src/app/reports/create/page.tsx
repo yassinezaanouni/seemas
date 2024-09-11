@@ -4,16 +4,10 @@ import React, {useState} from "react";
 import {motion} from "framer-motion";
 import SteppedProgress from "@/components/progress-steps";
 import {Button} from "@/components/ui/button";
-import {Input} from "@/components/ui/input";
 import {Logo} from "@/components/ui/logo";
 import {Step1Content} from "./components/step1-content";
 import {Step2Content} from "./components/step2-content";
 import {Step3Content} from "./components/step3-content";
-
-interface Step {
-  title: string;
-  content: React.ReactNode;
-}
 
 const Page = () => {
   const [data, setData] = useState({
@@ -23,14 +17,17 @@ const Page = () => {
   });
   const stepsContent = [
     <Step1Content
+      key="step1"
       data={data}
       setData={setData}
     />,
     <Step2Content
+      key="step3"
       data={data}
       setData={setData}
     />,
     <Step3Content
+      key="step3"
       onFileUpload={(file: File) => {
         console.log(file);
       }}
@@ -48,10 +45,6 @@ const Page = () => {
 
   const handlePrev = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
-  };
-
-  const handleReset = () => {
-    setCurrentStep(1);
   };
 
   const isNextButtonDisabled =

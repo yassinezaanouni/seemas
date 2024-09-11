@@ -178,8 +178,8 @@ const UploadedFileView = ({file, progress, onCancel}: UploadedFileViewProps) => 
 );
 
 type DropzoneViewProps = {
-  getRootProps: () => {};
-  getInputProps: () => {};
+  getRootProps: () => object;
+  getInputProps: () => object;
   isDragActive: boolean;
 };
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useEffect, useLayoutEffect, useRef} from "react";
+import React, {useEffect, useRef} from "react";
 import {gsap} from "gsap";
 import {Flip} from "gsap/all";
 import {cn} from "@/lib/utils";
@@ -56,7 +56,7 @@ export default function Component({steps, currentStep, className, ...props}: Ste
         {Array.from({length: steps}).map((_, index) => (
           <div
             key={index}
-            className="bg-primary-light-1 relative flex-1 rounded-full"
+            className="relative flex-1 rounded-full bg-primary-light-1"
           ></div>
         ))}
       </div>
