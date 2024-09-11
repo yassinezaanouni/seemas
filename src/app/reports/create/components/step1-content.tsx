@@ -74,8 +74,7 @@ export function Step1Content({data, setData}: {data: any; setData: any}) {
             }`}
             onClick={() => setData((prev: any) => ({...prev, selectedOption: option.id}))}
             variants={itemVariants}
-            whileHover={{scale: 1.05}}
-            whileTap={{scale: 0.95}}
+            whileTap={{scale: 1.05}}
           >
             <option.icon className="text-2xl" />
             <motion.div

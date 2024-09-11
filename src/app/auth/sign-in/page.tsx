@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {RightPanel} from "@/app/auth/component/right-panel";
 import {LeftPanel} from "../component/left-panel";
